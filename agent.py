@@ -35,22 +35,22 @@ class Agent:
 
         state = [
             # Danger straight ahead
-            (dir_r and game.is_collision(point_r)) or 
-            (dir_l and game.is_collision(point_l)) or 
-            (dir_u and game.is_collision(point_u)) or 
-            (dir_d and game.is_collision(point_d)),
+            (dir_r and game._is_collision(point_r)) or 
+            (dir_l and game._is_collision(point_l)) or 
+            (dir_u and game._is_collision(point_u)) or 
+            (dir_d and game._is_collision(point_d)),
 
             # Danger to the right
-            (dir_u and game.is_collision(point_r)) or 
-            (dir_d and game.is_collision(point_l)) or 
-            (dir_l and game.is_collision(point_u)) or 
-            (dir_r and game.is_collision(point_d)),
+            (dir_u and game._is_collision(point_r)) or 
+            (dir_d and game._is_collision(point_l)) or 
+            (dir_l and game._is_collision(point_u)) or 
+            (dir_r and game._is_collision(point_d)),
 
             # Danger to the left
-            (dir_d and game.is_collision(point_r)) or 
-            (dir_u and game.is_collision(point_l)) or 
-            (dir_r and game.is_collision(point_u)) or 
-            (dir_l and game.is_collision(point_d)),
+            (dir_d and game._is_collision(point_r)) or 
+            (dir_u and game._is_collision(point_l)) or 
+            (dir_r and game._is_collision(point_u)) or 
+            (dir_l and game._is_collision(point_d)),
 
             # Move direction
             dir_l,
@@ -72,7 +72,7 @@ class Agent:
 
     def train_long_memory(self):
         if len(self.memory) > BATCH_SIZE:
-            mini_sample = random.sanple(self.memory, BATCH_SIZE) # list of tuples to grab from
+            mini_sample = random.sample(self.memory, BATCH_SIZE) # list of tuples to grab from
         else:
             mini_sample = self.memory
 
@@ -85,7 +85,7 @@ class Agent:
 
     def get_action(self, state):
         # random moves: tradeoff between exploration / exploitation
-        self.epsilon - 80 - self.n_games
+        self.epsilon = 80 - self.n_games
         final_move = [0, 0, 0]
         if random.randint(0, 200) < self.epsilon:
             move = random.randint(0, 2)
