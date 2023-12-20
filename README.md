@@ -18,3 +18,5 @@ snakeRL is an attempt at learning and utilizing reinforcement learning within a 
 Some helpful notes:
 * Changing the `SPEED` variable in the `snake-ai.py` file can help speed up runs.
 * Try experimenting with the rewards or penalties to see different results.
+
+Updated: 12/19/23
